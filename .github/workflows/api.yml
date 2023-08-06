@@ -23,6 +23,7 @@ jobs:
 
       - name: SSH into server
         run: |
+          echo ${{ secrets.SERVER_IP }}
           ssh root@${{ secrets.SERVER_IP }}
 
       - name: Pull code into /api folder
