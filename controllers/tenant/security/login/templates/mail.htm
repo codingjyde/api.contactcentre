@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+       @import url('https://fonts.cdnfonts.com/css/sf-ui-display?styles=16102');
+       
+       .sf-ui {
+       	    font-family: 'SF UI Display', sans-serif;
+       }
+    </style>
+  </head>
+  <body class="bg-light sf-ui">
+    <div class="container">
+      <div class="card my-5" style="border-top-color:#ed144e; border-top-style:solid; border-top-width:4px;"> 
+        <div class="card-body sf-ui">
+          <h5 style="color:#ed144e;" class="text-center sf-ui">
+          	{{app_name}}
+          </h5>
+          <h1 class="text-center sf-ui">Login Activity Alert</h1>
+          
+          <p class="sf-ui">
+            <br/>
+            Dear <b>{{first_name}}</b>,
+          </p>
+          
+          <p class="sf-ui">
+            <br/>
+          	This is to inform you that a login was 
+            made to your <b>{{app_name}}</b> account 
+            at <b>{{time}}</b> on <b>{{date}}</b>. 
+            </p>
+          
+          <p class="sf-ui">
+            <br/>
+          	If you were the one who logged in, then 
+            this message can be disregarded. However, 
+            if you did not make this login, it is 
+            important to take immediate action to 
+            secure your account. Here are some steps 
+            you can take to protect your account:
+          </p>
+          
+            <ol class="sf-ui">
+              <li>
+                Change your password as soon as 
+                possible. Choose a strong, unique 
+                password and avoid using the same 
+                password for multiple accounts.
+              </li>
+              <li>
+                Review your account information and 
+                update it if necessary. This 
+                includes your email address, phone 
+                number, and any other sensitive 
+                information.
+              </li>
+              <li>
+                Keep an eye on your account 
+                activity. Check your recent 
+                transactions, notifications, and 
+                any other activity that may look 
+                suspicious.
+              </li>
+          	</ol>
+          
+          <p class="sf-ui">
+            If you have any questions or concerns, 
+            please feel free to reach out to our 
+            <a href='{{support_email}}'>
+              support team
+            </a>.
+          </p>
+        
+          <p class="sf-ui">
+            <br/>
+            Thank you.
+          </p>
+
+          <p class="sf-ui">
+            <br/>
+            The {{app_name}} Team!
+          </p>
+        </div>
+      </div>
+      <div class="text-center text-muted sf-ui">
+          <div style="font-size:10pt;">
+          	<a style="color:#ed144e;" href="https://web.facebook.com/contactcentre24">
+          		Facebook
+      		</a>
+          	|
+          	<a style="color:#ed144e;" href="https://www.instagram.com/contactcentre24">
+          		Instagram
+      		</a>
+          	|
+          	<a style="color:#ed144e;" href="https://www.twitter.com/contactcentre24">
+          		Twitter
+      		</a>
+        </div>  
+        <div class="text-muted sf-ui" style="font-size:8pt;">
+          	You received this email because 
+          	someone logged in to your {{app_name}} 
+          	account.
+      		<br/><br/>
+        	{{app_name}},<br/>
+        	Lagos, Nigeria.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
