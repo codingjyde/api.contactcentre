@@ -21,9 +21,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build app (if needed)
-        run: npm run build
-
       - name: SSH into server
         run: |
           ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_IP }}
