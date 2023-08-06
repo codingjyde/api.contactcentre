@@ -22,7 +22,9 @@ jobs:
         run: npm install
 
       - name: Clear known_hosts
-        run: ssh-keygen -R ${{ secrets.SERVER_IP }}
+        run: | 
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keygen -R ${{ secrets.SERVER_IP }}
         
       - name: SSH into server
         run: |
