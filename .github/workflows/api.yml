@@ -1,0 +1,50 @@
+name: Node.js App Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app (if needed)
+        run: npm run build
+
+      - name: SSH into server
+        run: |
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_IP }}
+
+      - name: Pull code into /api folder
+        run: |
+          mkdir /api
+          git clone . /api
+
+      - name: Install dependencies for /api
+        working-directory: /api
+        run: npm install
+
+      - name: Run app using PM2
+        working-directory: /api
+        run: |
+          npm install pm2 -g
+          pm2 start index.js --name ContactCentre
+          pm2 save
+
+      - name: Post-deployment cleanup (if needed)
+        run: |
+          # Any cleanup or final steps after deployment
+          echo "Deployment completed"
