@@ -30,6 +30,7 @@ jobs:
             port: 22
             script: |
               pm2 stop all
+              mkdir ~/api
               cd ~/api
               git pull origin master
               git status
