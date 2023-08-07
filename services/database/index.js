@@ -77,7 +77,12 @@ const init = async function() {
 
         handleEvents();
 
-        await mongoose.connect(config.MONGODB_CONNECTION_STRING);
+        console.log(config.MONGODB_CONNECTION_STRING);
+
+        await mongoose.connect(config.MONGODB_CONNECTION_STRING, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
 
         ChannelAccount.createCollection();
         setupChangeStreams(ChannelAccount);
