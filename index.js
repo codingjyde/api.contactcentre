@@ -62,10 +62,10 @@ app.use(function(req, res){
 server.listen(port, async () => {
   logService.info(`Initialising ${ config.APP_NAME }, please wait...`);
 
-  await databaseService.init();
+  // await databaseService.init();
   //await freeswitchService.init();
-  mailService.init(); 
-  jobsService.init();
+  // mailService.init(); 
+  // jobsService.init();
   
   logService.info(`${ config.APP_NAME } listening on port ${ port }.`);
 
