@@ -70,60 +70,64 @@ const handleEvents = function() {
 }
 
 const init = async function() {
-    logService.info("Initialising database service, please wait...", metadata);
+    try {
+        logService.info("Initialising database service, please wait...", metadata);
     
-    mongoose.set('strictQuery', true);
+        mongoose.set('strictQuery', true);
 
-    handleEvents();
+        handleEvents();
 
-    await mongoose.connect(config.MONGODB_CONNECTION_STRING);
+        await mongoose.connect(config.MONGODB_CONNECTION_STRING);
 
-    ChannelAccount.createCollection();
-    setupChangeStreams(ChannelAccount);
+        ChannelAccount.createCollection();
+        setupChangeStreams(ChannelAccount);
 
-    Contact.createCollection();
-    setupChangeStreams(Contact);
+        Contact.createCollection();
+        setupChangeStreams(Contact);
 
-    ContactAccount.createCollection();
-    setupChangeStreams(ContactAccount);
+        ContactAccount.createCollection();
+        setupChangeStreams(ContactAccount);
 
-    Conversation.createCollection();
-    setupChangeStreams(Conversation);
+        Conversation.createCollection();
+        setupChangeStreams(Conversation);
 
-    ConversationItem.createCollection();
-    setupChangeStreams(ConversationItem);
+        ConversationItem.createCollection();
+        setupChangeStreams(ConversationItem);
 
-    Counter.createCollection();
-    
-    Domain.createCollection();
-    setupChangeStreams(Domain);
+        Counter.createCollection();
+        
+        Domain.createCollection();
+        setupChangeStreams(Domain);
 
-    EmailMessage.createCollection();
-    setupChangeStreams(EmailMessage);
+        EmailMessage.createCollection();
+        setupChangeStreams(EmailMessage);
 
-    Label.createCollection();
-    setupChangeStreams(Label);
+        Label.createCollection();
+        setupChangeStreams(Label);
 
-    Organisation.createCollection();
-    setupChangeStreams(Organisation);
+        Organisation.createCollection();
+        setupChangeStreams(Organisation);
 
-    Password.createCollection();
-    setupChangeStreams(Password);
+        Password.createCollection();
+        setupChangeStreams(Password);
 
-    Token.createCollection();
-    setupChangeStreams(Token);
+        Token.createCollection();
+        setupChangeStreams(Token);
 
-    User.createCollection();
-    setupChangeStreams(User);
+        User.createCollection();
+        setupChangeStreams(User);
 
-    WebChatMessage.createCollection();
-    setupChangeStreams(WebChatMessage);
+        WebChatMessage.createCollection();
+        setupChangeStreams(WebChatMessage);
 
-    WebChatSession.createCollection();
-    setupChangeStreams(WebChatSession);
+        WebChatSession.createCollection();
+        setupChangeStreams(WebChatSession);
 
-    
-    logService.info("Database service initialised.", metadata);
+        
+        logService.info("Database service initialised.", metadata);    
+    } catch (error) {
+        logService.error(error.message, metadata);
+    }
 }
 
 module.exports = {
