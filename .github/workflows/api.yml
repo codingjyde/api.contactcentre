@@ -23,7 +23,7 @@ jobs:
 
       - name: SSH into server
         run: |
-          ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_IP }}
+          ssh -v -o StrictHostKeyChecking=no root@${{ secrets.SERVER_IP }}
 
       - name: Pull code into /api folder
         run: |
