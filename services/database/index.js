@@ -79,9 +79,10 @@ const init = async function() {
 
         console.log(config.MONGODB_CONNECTION_STRING);
 
-        await mongoose.connect(config.MONGODB_CONNECTION_STRING, {
+        const connection = await mongoose.connect(config.MONGODB_CONNECTION_STRING, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
+            serverSelectionTimeoutMS: 5000,
         });
 
         ChannelAccount.createCollection();
