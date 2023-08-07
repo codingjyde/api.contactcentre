@@ -88,6 +88,9 @@ const init = async function() {
         ChannelAccount.createCollection();
         setupChangeStreams(ChannelAccount);
 
+        console.log("ChannelAccount collection created.");
+        console.log();
+
         Contact.createCollection();
         setupChangeStreams(Contact);
 
