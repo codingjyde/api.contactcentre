@@ -21,26 +21,23 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: SSH into server
-        run: |
-          ssh -v -o StrictHostKeyChecking=no root@${{ secrets.SERVER_IP }}
-
-      - name: Pull code into /api folder
-        run: |
-          mkdir /api
-          git clone . /api
-
-      - name: Install dependencies for /api
-        working-directory: /api
-        run: npm install
-
-      - name: Run app using PM2
-        working-directory: /api
-        run: |
-          npm install pm2 -g
-          pm2 start index.js --name ContactCentre
-          pm2 save
-
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@master
+        with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            key: ${{ secrets.PRIVATE_KEY }}
+            port: 22
+            script: |
+              pm2 stop all
+              cd ~/api
+              git pull origin master
+              git status
+              npm install --only=prod
+              pm2 start index.js --name contactcentre-api
+              pm2 save
+              pm2 restart all
+              
       - name: Post-deployment cleanup (if needed)
         run: |
           # Any cleanup or final steps after deployment
