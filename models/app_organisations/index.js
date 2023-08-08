@@ -14,6 +14,12 @@ const schema = new mongoose.Schema({
         trim: true,
         type: String,
     },
+    switchId: {
+        index: true,
+        maxLength: 128,
+        trim: true,
+        type: String,
+    },
     status: {
         enum: [
             OrganisationStatus.ACTIVE,
