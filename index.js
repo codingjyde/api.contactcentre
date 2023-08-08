@@ -69,7 +69,7 @@ server.listen(port, async () => {
   
   logService.info(`${ config.APP_NAME } listening on port ${ port }.`);
 
-  //freeswitchService.createDomain("sterling"); 
+  freeswitchService.createDomain("sterling"); 
 
   //const mailgunService = require("./services/mailgun");
   //mailgunService.addDomain("cc.innerseede.com");

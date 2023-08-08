@@ -40,7 +40,7 @@ module.exports = async function(domainName) {
                     resolve(response.getBody());
                 });
             });
-        });
+        }); 
     } catch (error) {
         console.log(error.message);  
     } 
