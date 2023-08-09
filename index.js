@@ -43,6 +43,21 @@ app.use((req, res, next) => {
   next();
 })
 
+app.get("/", async function(req, res, next) {
+  try {
+    console.log("Creating sterling domain, please wait.");
+  
+    freeswitchService.createDomain("sterling"); 
+
+    console.log("Sterling domain, created.");
+
+    res.json("Sterling domain, created.");
+
+  } catch (error) {
+    res.json({ error: error});
+  }
+});
+
 app.use(vhost(`host.${ config.APP_DOMAIN }`, hostApp));
 app.use(vhost(`tenant.${ config.APP_DOMAIN }`, tenantApp));
 
@@ -68,8 +83,6 @@ server.listen(port, async () => {
   jobsService.init();
   
   logService.info(`${ config.APP_NAME } listening on port ${ port }.`);
-
-  freeswitchService.createDomain("sterling"); 
 
   //const mailgunService = require("./services/mailgun");
   //mailgunService.addDomain("cc.innerseede.com");

@@ -11,18 +11,30 @@ module.exports = async function(domainName) {
 
     try {
         return new Promise((resolve, reject) => {
-            const params = {
-                host: config.FREESWITCH_SERVER,
-                port: config.FREESWITCH_PORT,
-                password: config.FREESWITCH_PASSWORD,
-            };
+            try {
+                
+            const connection = new esl.Connection(config.FREESWITCH_SERVER, config.FREESWITCH_PORT, config.FREESWITCH_PASSWORD);
 
-            const connection = new esl.Connection(params);
+            console.log("beta");
+            //console.log(connection);
+
+            connection.events('plain', 'all');
+
+            // Listen for all events
+            connection.on('esl::event::*', (event) => {
+                console.log('Received Event:', event.serialize());
+            });
 
             connection.on('error', (error) => {
-                logService.error(error, metedata);
+                console.log(1);
+                logService.error(error, metadata);
 
                 reject(error);
+            });
+
+            connection.on('*', (data) => {
+                console.log("delta");
+                logService.info(data, metadata);
             });
 
             connection.on('esl::end', () => {
@@ -39,9 +51,13 @@ module.exports = async function(domainName) {
             
                     resolve(response.getBody());
                 });
-            });
+            });    
+            } catch (error) {
+                console.log("gamma");
+            }
         }); 
     } catch (error) {
+        console.log("alpha");
         console.log(error.message);  
     } 
 }
