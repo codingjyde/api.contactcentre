@@ -1,0 +1,6 @@
+{
+    "name": "contactcentre-api",
+    "script": "index.js",
+    "instances": "max",
+    "autorestart": true
+}

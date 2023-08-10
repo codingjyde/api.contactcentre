@@ -31,7 +31,6 @@
     "mailgun.js": "^8.2.2",
     "mailparser": "^3.6.5",
     "mjml": "^4.13.0",
-    "modesl": "^1.2.1",
     "mongoose": "^6.9.1",
     "socket.io": "^4.6.0",
     "uuid": "^9.0.0",

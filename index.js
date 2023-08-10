@@ -13,7 +13,6 @@ const cors = require("./middleware/cors");
 const logger = require("./middleware/logger");
 
 const databaseService = require("./services/database");
-const freeswitchService = require("./services/freeswitch");
 const ioService = require("./services/io");
 const jobsService = require("./services/jobs");
 const logService = require("./services/logger");
@@ -42,21 +41,6 @@ app.use((req, res, next) => {
 
   next();
 })
-
-app.get("/", async function(req, res, next) {
-  try {
-    console.log("Creating sterling domain, please wait.");
-  
-    freeswitchService.createDomain("sterling"); 
-
-    console.log("Sterling domain, created.");
-
-    res.json("Sterling domain, created.");
-
-  } catch (error) {
-    res.json({ error: error});
-  }
-});
 
 app.use(vhost(`host.${ config.APP_DOMAIN }`, hostApp));
 app.use(vhost(`tenant.${ config.APP_DOMAIN }`, tenantApp));
