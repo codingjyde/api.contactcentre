@@ -42,8 +42,8 @@ app.use((req, res, next) => {
   next();
 })
 
-app.use(vhost(`host.${ config.APP_DOMAIN }`, hostApp));
-app.use(vhost(`tenant.${ config.APP_DOMAIN }`, tenantApp));
+app.use(vhost(`host.api.${ config.APP_DOMAIN }`, hostApp));
+app.use(vhost(`tenant.api.${ config.APP_DOMAIN }`, tenantApp));
 
 app.use(function(err, req, res, next){
   res.status(err.status || 500);

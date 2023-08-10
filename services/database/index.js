@@ -118,10 +118,10 @@ const init = async function() {
         setupChangeStreams(Organisation);
 
         Password.createCollection();
-        setupChangeStreams(Password);
+        //setupChangeStreams(Password);
 
         Token.createCollection();
-        setupChangeStreams(Token);
+        //setupChangeStreams(Token);
 
         User.createCollection();
         setupChangeStreams(User);

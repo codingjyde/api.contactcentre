@@ -63,6 +63,9 @@ router.post('/channelaccounts', validators, async (req, res, next) => {
                 }
                 data.clientId = cryptoService.getRandomString(CLIENT_ID_LENGTH) 
                 break;
+            case Channel.TELEPHONY:
+                data.subDomain = ""; 
+                break;
             default:
                 break;
         }
